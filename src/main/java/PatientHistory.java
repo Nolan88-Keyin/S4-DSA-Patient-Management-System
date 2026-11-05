@@ -71,6 +71,32 @@ public class PatientHistory {
         return current.data;
     }
 
+    public void showNextWithMessage() {
+        if (isEmpty()) {
+            System.out.println("No patient history records available.");
+            return;
+        }
+        PatientHistoryRecord record = next();
+        if (record == null) {
+            System.out.println("Already at the newest record.");
+        } else {
+            System.out.println(record);
+        }
+    }
+
+    public void showPreviousWithMessage() {
+        if (isEmpty()) {
+            System.out.println("No patient history records available.");
+            return;
+        }
+        PatientHistoryRecord record = previous();
+        if (record == null) {
+            System.out.println("Already at the oldest record.");
+        } else {
+            System.out.println(record);
+        }
+    }
+
     public boolean hasNext() {
         return current != null && current.next != null;
     }
