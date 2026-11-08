@@ -14,9 +14,13 @@ public class PatientScannerMenu {
     }
 
     public void run() {
-        while (running && scanner.hasNextLine()) {
+        while (running) {
             printMenu();
+            if (!scanner.hasNextLine()) {
+                break;
+            }
             String choice = scanner.nextLine().trim();
+            System.out.println();
 
             switch (choice) {
                 case "1":
@@ -97,7 +101,7 @@ public class PatientScannerMenu {
         if (patient == null) {
             System.out.println("The waiting queue is empty.");
         } else {
-            System.out.println("Serving patient: " + patient);
+            System.out.println("Served: " + patient.getName() + " (ID: " + patient.getId() + ")");
         }
     }
 
